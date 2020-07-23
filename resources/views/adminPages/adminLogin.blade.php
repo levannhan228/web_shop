@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			$message = Session::get('message');
 			if($message){
 				echo $message;
-				Session::get('message',null);
+				Session::put('message',null);
 			}
 	@endphp
 		<form action="admin/dashboard" method="post">

@@ -92,8 +92,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Product</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">Create Product</a></li>
-                        <li><a href="glyphicon.html">List Product</a></li>
+                        <li><a href="./admin/add-category-product">Create Product</a></li>
+                        <li><a href="./admin/list-category-product">List Product</a></li>
                     </ul>
                 </li>
         <!-- sidebar menu end-->
