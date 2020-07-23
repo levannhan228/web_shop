@@ -5,6 +5,13 @@
     <div class="panel-heading">
       List Product
     </div>
+    @php
+    $message = Session::get('message');
+    if($message){
+      echo $message;
+      Session::put('message',null);
+    }
+  @endphp
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
@@ -37,20 +44,27 @@
             </th>
             <th>Product Name</th>
             <th>Display</th>
-            <th>Days Added</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
+          @foreach ($list_category_product as $item)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Formasa</td>
-            <td>Hide/ Show</td>
-            <td>23.7.2020</td>
+          <td>{{$item->category_name}}</td>
             <td>
-              <a href="" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+              @if ($item->category_status==0)
+            <a href="./admin/product/product_status/{{$item->category_id}}"><span>Hide</span></a>
+              @else
+                <a href="./admin/product/product_status/{{$item->category_id}}"><span>Show</span></a>
+              @endif
+            </td>
+            <td>
+              <a href="./admin/product/edit_product/{{$item->category_id}}" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+              <a onclick="return confirm('Are you sure to delete?')" href="./admin/product/delete_product/{{$item->category_id}}"><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

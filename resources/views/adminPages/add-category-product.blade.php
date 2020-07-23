@@ -15,7 +15,7 @@
                 }
                 @endphp
                 <div class="position-center">
-                    <form role="form" action="./admin/save-category-product" method="post">
+                    <form role="form" action="./admin/product/save-category-product" method="post">
                         {{ csrf_field() }}
                     <div class="form-group">
                         <label for="exampleInputEmail1">Product Name</label>
