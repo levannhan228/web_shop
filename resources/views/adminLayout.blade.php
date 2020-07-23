@@ -85,17 +85,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Dashboard</span>
                     </a>
                 </li>
-                
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Product</span>
+                        <span>Product Category</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="./admin/product/add-category-product">Create Product</a></li>
-                        <li><a href="./admin/product/list-category-product">List Product</a></li>
+                        <li><a href="./admin/product/add-category-product">Create Product Category</a></li>
+                        <li><a href="./admin/product/list-category-product">List Product Category</a></li>
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Product Brands</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="./admin/brand/add-brand-product">Create Product Brands</a></li>
+                        <li><a href="./admin/brand/list-brand-product">List Product Brands</a></li>
+                    </ul>
+								</li>
+								<li class="sub-menu">
+									<a href="javascript:;">
+											<i class="fa fa-book"></i>
+											<span>Product</span>
+									</a>
+									<ul class="sub">
+											<li><a href="./admin/product/add-product">Create Product</a></li>
+											<li><a href="./admin/product/list-product">List Product</a></li>
+									</ul>
+							</li>
         <!-- sidebar menu end-->
     </div>
 </aside>

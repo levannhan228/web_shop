@@ -3,7 +3,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      List Product
+      List Brand
     </div>
     @php
     $message = Session::get('message');
@@ -48,20 +48,20 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($list_category_product as $item)
+          @foreach ($list_brand_product as $item)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-          <td>{{$item->category_name}}</td>
+          <td>{{$item->brand_name}}</td>
             <td>
-              @if ($item->category_status==0)
-            <a href="./admin/product/product_category_status/{{$item->category_id}}"><span>Hide</span></a>
+              @if ($item->brand_status==0)
+            <a href="./admin/brand/brand_status_product/{{$item->brand_id}}"><span>Hide</span></a>
               @else
-                <a href="./admin/product/product_category_status/{{$item->category_id}}"><span>Show</span></a>
+                <a href="./admin/brand/brand_status_product/{{$item->brand_id}}"><span>Show</span></a>
               @endif
             </td>
             <td>
-              <a href="./admin/product/edit_category_product/{{$item->category_id}}" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Are you sure to delete?')" href="./admin/product/delete_category_product/{{$item->category_id}}"><i class="fa fa-times text-danger text"></i></a>
+              <a href="./admin/brand/edit_brand_product/{{$item->brand_id}}" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+              <a onclick="return confirm('Are you sure to delete?')" href="./admin/brand/delete_brand_product/{{$item->brand_id}}"><i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
           @endforeach
