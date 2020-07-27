@@ -15,7 +15,7 @@
         }
         @endphp
         <div class="position-center">
-            <form role="form" action="./admin/product/save-product" method="post">
+            <form role="form" action="./admin/product/save-product" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
             <div class="form-group">
                 <label for="exampleInputEmail1">Product Name</label>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Category Product</label>
-                <select name="productt_status" class="form-control input-sm m-bot15">
+                <select name="product_category" class="form-control input-sm m-bot15">
                     @foreach ($list_category_product as $item)
                         <option value="{{$item->category_id}}">{{$item->category_name}}</option>
                     @endforeach
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Product Brand</label>
-                <select name="productt_status" class="form-control input-sm m-bot15">
+                <select name="product_brand" class="form-control input-sm m-bot15">
                     @foreach ($list_brand_product as $item)
                         <option value="{{$item->brand_id}}">{{$item->brand_name}}</option>
                     @endforeach
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Status</label>
-                <select name="productt_status" class="form-control input-sm m-bot15">
+                <select name="product_status" class="form-control input-sm m-bot15">
                     <option value="0">Hide</option>
                     <option value="1">Show</option>
                 </select>

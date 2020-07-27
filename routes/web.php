@@ -45,9 +45,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/add-product','ProductController@add_product');
         Route::post('/save-product','ProductController@save_product');
         Route::get('/list-product','ProductController@list_product');
-        Route::get('/brand_status/{id}','ProductController@status_product');
+        Route::get('/product_status/{id}','ProductController@status_product');
         Route::get('/edit_product/{id}','ProductController@edit_product');
-        Route::post('/update_brand/{id}','ProductController@update_product');
-        Route::get('/delete_brand/{id}','ProductController@delete_product');
+        Route::post('/update_product/{id}','ProductController@update_product');
+        Route::get('/delete_product/{id}','ProductController@delete_product');
     });
 });	
