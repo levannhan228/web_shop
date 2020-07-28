@@ -3,7 +3,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      List Brand
+      List Product
     </div>
     @php
     $message = Session::get('message');
@@ -57,7 +57,7 @@
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
           <td>{{$item->product_name}}</td>
           <td>{{$item->product_price}}</td>
-          <td><img src="./uploads/product/{{$item->product_image}}" alt="" height="100" width="100"></td>
+          <td><img src="./uploads/product/{{$item->product_image}}" alt="" class="img_product"></td>
           <td>{{$item->category_name}}</td> 
           <td>{{$item->brand_name}}</td> 
             <td>

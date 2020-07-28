@@ -29,7 +29,7 @@
                         <label for="exampleInputEmail1">Status</label>
                         <select name="category_product_status" class="form-control input-sm m-bot15">
                             <option value="0">Hide</option>
-                            <option value="1">Show</option>
+                            <option selected value="1">Show</option>
                         </select>
                     </div>
                     <button type="submit" name="add_category_product" class="btn btn-info">Add</button>

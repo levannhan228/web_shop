@@ -36,6 +36,7 @@ class ProductController extends Controller
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->product_category;
         $data['brand_id'] = $request->product_brand;
+        $data['product_status'] = $request->product_status;
         if($request->file('product_image')){
             // $this->validate($request,[
             //     'imageteam' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

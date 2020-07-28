@@ -3,7 +3,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      List Brand
+      List Product Brand
     </div>
     @php
     $message = Session::get('message');

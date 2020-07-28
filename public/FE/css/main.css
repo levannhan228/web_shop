@@ -884,6 +884,7 @@ h2.title {
 
 .productinfo img{
   width: 100%;
+  object-fit: cover !important;
 }
 
 .productinfo{

@@ -442,5 +442,9 @@
 		white-space: nowrap;
 		box-sizing: border-box;
 	}
-
+	.img_product{
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: cover;
+}
 }

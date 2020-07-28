@@ -54,10 +54,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Status</label>
+                <label for="exampleInputEmail1">Status</label>
                 <select name="product_status" class="form-control input-sm m-bot15">
                     <option value="0">Hide</option>
-                    <option value="1">Show</option>
+                    <option selected value="1">Show</option>
                 </select>
             </div>
             <button type="submit" name="add_product" class="btn btn-info">Add product</button>
