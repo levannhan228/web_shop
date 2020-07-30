@@ -33,11 +33,11 @@
                       </div>
                       <div class="form-group">
                           <label for="exampleInputPassword1">Product Description</label>
-                          <textarea style="resize:none" rows="5" class="form-control" name="product_description" placeholder="content"> {{$item->product_content}}</textarea>
+                          <textarea style="resize:none" rows="5" class="form-control" name="product_description" placeholder="content"> {{$item->product_desc}}</textarea>
                       </div>
                       <div class="form-group">
                           <label for="exampleInputPassword1">Product Content</label>
-                          <textarea style="resize:none" rows="5" class="form-control" name="product_content" placeholder="description"> {{$item->product_desc}}</textarea>
+                          <textarea style="resize:none" rows="5" class="form-control" name="product_content" placeholder="description"> {{$item->product_content}}</textarea>
                       </div>
                       <div class="form-group">
                           <label for="exampleInputPassword1">Category Product</label>
@@ -63,7 +63,7 @@
                               @endforeach
                           </select>
                       </div>
-                      <button type="submit" name="add_product" class="btn btn-info">Add product</button>
+                      <button type="submit" name="add_product" class="btn btn-info">Update Product</button>
                     </form>
                     @endforeach
                 </div>

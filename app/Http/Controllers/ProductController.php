@@ -112,7 +112,21 @@ class ProductController extends Controller
 
         $list_brand_product = DB::table('brand_product')
         ->orderby('brand_id','desc')->get();
+
+        $detail_product = DB::table('product')
+        ->join('category_product','category_product.category_id','=','product.category_id')
+        ->join('brand_product','brand_product.brand_id','=','product.brand_id')
+        ->where('product.product_id',$id)
+        ->first();
+        
+        $recommended_category_product = DB::table('product')
+        ->where('brand_id',$detail_product->brand_id)
+        ->whereNotIn('product_id',[$id])
+        ->orderby('product_id','desc')->limit(3)
+        ->get();
+
         return view('userPages.product.show_detail',['list_category_product'=>
-        $list_category_product,'list_brand_product'=>$list_brand_product]);
+        $list_category_product,'list_brand_product'=>$list_brand_product,
+        'detail_product'=>$detail_product,'recommended_category_product'=>$recommended_category_product]);
     }
 }

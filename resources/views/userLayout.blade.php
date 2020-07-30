@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+		<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 		<meta name="author" content="">
 		<base href="{{ asset('') }}">
-    <title>Home | E-Shopper</title>
+		<title>Home | E-Shopper</title>
+		{{-- <link href="FE/css/sweetalert.css" rel="stylesheet"> --}}
     <link href="FE/css/bootstrap.min.css" rel="stylesheet">
     <link href="FE/css/font-awesome.min.css" rel="stylesheet">
     <link href="FE/css/prettyPhoto.css" rel="stylesheet">
     <link href="FE/css/price-range.css" rel="stylesheet">
     <link href="FE/css/animate.css" rel="stylesheet">
-	<link href="FE/css/main.css" rel="stylesheet">
-	<link href="FE/css/responsive.css" rel="stylesheet">
+		<link href="FE/css/main.css" rel="stylesheet">
+		<link href="FE/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -91,7 +92,7 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="./adminLogin"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -423,6 +424,10 @@
 	<script src="FE/js/jquery.scrollUp.min.js"></script>
 	<script src="FE/js/price-range.js"></script>
     <script src="FE/js/jquery.prettyPhoto.js"></script>
-    <script src="FE/js/main.js"></script>
+		<script src="FE/js/main.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		{{-- <script src="FE/js/sweetalert.js"></script> --}}
+		<script src="FE/js/add-to-card.js"></script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
   <div class="product-details"><!--product-details-->
     <div class="col-sm-5">
       <div class="view-product">
-        <img src="FE/images/product-details/1.jpg" alt="" />
+      <img src="uploads/product/{{$detail_product->product_image}}" alt="" />
         <h3>ZOOM</h3>
       </div>
       <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -41,21 +41,25 @@
     <div class="col-sm-7">
       <div class="product-information"><!--/product-information-->
         <img src="FE/images/product-details/new.jpg" class="newarrival" alt="" />
-        <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-        <p>Web ID: 1089772</p>
+      <h2>{{$detail_product->product_name}}</h2>
+        <p>Web ID: {{$detail_product->product_id}}</p>
         <img src="FE/images/product-details/rating.png" alt="" />
-        <span>
-          <span>US $59</span>
-          <label>Quantity:</label>
-          <input type="text" value="3" />
-          <button type="button" class="btn btn-fefault cart">
-            <i class="fa fa-shopping-cart"></i>
-            Add to cart
-          </button>
-        </span>
+        <form action="./save-cart" method="POST">
+          {{ csrf_field() }}
+          <span>
+          <span>US ${{number_format($detail_product->product_price)}}</span>
+            <label>Quantity:</label>
+            <input type="number" name="qty" min="1" value="1" />
+            <input name="productid_hidden" type="hidden" value="{{$detail_product->product_id}}"/>
+            <button type="submit" class="btn btn-fefault cart">
+              <i class="fa fa-shopping-cart"></i>
+              Add to cart
+            </button>
+          </span>
+        </form>
         <p><b>Availability:</b> In Stock</p>
         <p><b>Condition:</b> New</p>
-        <p><b>Brand:</b> E-SHOPPER</p>
+        <p><b>Brand:</b> {{$detail_product->brand_name}}</p>
         <a href=""><img src="FE/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
       </div><!--/product-information-->
     </div>
@@ -64,14 +68,20 @@
   <div class="category-tab shop-details-tab"><!--category-tab-->
     <div class="col-sm-12">
       <ul class="nav nav-tabs">
-        <li><a href="#details" data-toggle="tab">Details</a></li>
-        <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+        <li class="active"><a href="#deitalProduct" data-toggle="tab">Description</a></li>
+        <li><a href="#detail" data-toggle="tab">Detail Product</a></li>
         <li><a href="#tag" data-toggle="tab">Tag</a></li>
-        <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+        <li><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
       </ul>
     </div>
     <div class="tab-content">
-      <div class="tab-pane fade active in" id="reviews" >
+      <div class="tab-pane fade active in" id="deitalProduct" >
+        {!!$detail_product->product_desc!!}
+      </div>
+      <div class="tab-pane fade in" id="detail" >
+        {!!$detail_product->product_content!!}
+      </div>
+      <div class="tab-pane fade in" id="reviews" >
         <div class="col-sm-12">
           <ul>
             <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -104,80 +114,20 @@
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="item active">	
+          @foreach ($recommended_category_product as $item)
           <div class="col-sm-4">
             <div class="product-image-wrapper">
               <div class="single-products">
                 <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend1.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
+                <img src="uploads/product/{{$item->product_image}}" alt="" height="300px" />
+                  <h2>${{number_format($item->product_price)}}</h2>
+                  <p>{{$item->product_name}}</p>
                   <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend2.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
-                  <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend3.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
-                  <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="item">	
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend1.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
-                  <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend2.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
-                  <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="product-image-wrapper">
-              <div class="single-products">
-                <div class="productinfo text-center">
-                  <img src="FE/images/home/recommend3.jpg" alt="" />
-                  <h2>$56</h2>
-                  <p>Easy Polo Black Edition</p>
-                  <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
         <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

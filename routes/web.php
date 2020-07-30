@@ -21,6 +21,8 @@ Route::get('/list-category/{id}','CategoryProduct@show_CategoryHome');
 
 Route::get('/list-brand/{id}','BrandProduct@show_BrandHome');
 Route::get('/detail-product/{id}','ProductController@detailProduct');
+Route::post('/save-cart','CartController@saveCart');
+Route::post('/add-card-ajax','CartController@addCardAjax');
 
 Route::get('/adminLogin','AdminController@loginAdmin');
 
