@@ -1,24 +1,19 @@
 @extends('userLayout')
 @section('content')
 <div class="features_items"><!--features_items-->
-  <h2 class="title text-center">Features Items</h2>
+  <h2 class="title text-center">New Items</h2>
   @foreach ($all_product as $item)
   <div class="col-sm-4">
     <div class="product-image-wrapper">
       <div class="single-products">
+      <a href="./detail-product/{{$item->product_id}}">
           <div class="productinfo text-center">
           <img src="uploads/product/{{$item->product_image}}" alt="" height="300"/>
           <h2>${{number_format($item->product_price)}}</h2>
           <p>{{$item->product_name}}</p>
             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
           </div>
-          <div class="product-overlay">
-            <div class="overlay-content">
-              <h2>$56</h2>
-              <p>Easy Polo Black Edition</p>
-              <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-            </div>
-          </div>
+        </a>
       </div>
       <div class="choose">
         <ul class="nav nav-pills nav-justified">
@@ -65,6 +60,7 @@
     <div class="carousel-inner">
       <div class="item active">
         @foreach ($product_random as $item)
+        <a href="">
         <div class="col-sm-4">
           <div class="product-image-wrapper">
             <div class="single-products">
@@ -77,6 +73,7 @@
             </div>
           </div>
         </div>
+      </a>
         @endforeach	
       </div>
     </div>

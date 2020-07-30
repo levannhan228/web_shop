@@ -73,6 +73,7 @@ class ProductController extends Controller
 
         return view('adminPages.edit-product',['edit_product'=>$edit_product,'list_category_product'=>$list_category_product,'list_brand_product'=>$list_brand_product]);
     }
+
     public function update_product (Request $request,$id){
         // dd($request);
         $data = array();
@@ -97,9 +98,21 @@ class ProductController extends Controller
         Session::put('message','add product ok');
         return Redirect::to('./admin/product/list-product');
     }
+
     public function delete_product ($id){
         DB::table('product')->where('product_id',$id)->delete();
         Session::put('message','Xóa thành công');
         return Redirect::to('./admin/product/list-product');
+    }
+
+    public function detailProduct($id)
+    {
+        $list_category_product = DB::table('category_product')
+        ->orderby('category_id','desc')->get();
+
+        $list_brand_product = DB::table('brand_product')
+        ->orderby('brand_id','desc')->get();
+        return view('userPages.product.show_detail',['list_category_product'=>
+        $list_category_product,'list_brand_product'=>$list_brand_product]);
     }
 }

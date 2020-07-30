@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryProduct extends Controller
 {
+    //Admin
     public function add_category_product()
     {
         return view('adminPages.add-category-product');
@@ -58,5 +59,28 @@ class CategoryProduct extends Controller
         DB::table('category_product')->where('category_id',$id)->delete();
         Session::put('message','Xóa thành công');
         return Redirect::to('./admin/product/list-category-product');
+    }
+    //Home Page
+    public function show_CategoryHome($id)
+    {
+        $list_category_product = DB::table('category_product')
+        ->where('category_status','1')
+        ->orderby('category_id','desc')->get();
+
+        $list_brand_product = DB::table('brand_product')
+        ->where('brand_status','1')
+        ->orderby('brand_id','desc')->get();
+
+        $list_product = DB::table('product')
+        ->join('category_product','product.category_id','=','category_product.category_id')
+        ->where('product.category_id',$id)
+        ->get();
+
+        $category_name = DB::table('category_product')
+        ->select('category_name')
+        ->where('category_product.category_id',$id)->first();
+
+        return view('userPages.category.show-category',['list_product'=>$list_product,'list_brand_product'=>
+        $list_brand_product,'list_category_product'=>$list_category_product,'category_name'=>$category_name]);
     }
 }

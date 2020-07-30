@@ -27,7 +27,13 @@ class HomeController extends Controller
         ->whereNotIn('product_id',$all_product->pluck('product_id')->toArray())
         ->get()->random(3);
 
-        // dd($product_random);
+        // $list_category_product= DB::table('product')
+        // ->join('category_product','product.category_id','=','category_product.category_id')
+        // ->select('product.category_id', DB::raw('count(*) as total'))
+        // ->groupBy('product.category_id')
+        // ->pluck('total','category_product.category_id')
+        // ->get();
+
         return view('userPages.home')->with(['list_category_product'=>$list_category_product,
         'list_brand_product'=>$list_brand_product,'all_product'=>$all_product,'product_random'=>$product_random]);
     }

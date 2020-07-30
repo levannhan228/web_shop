@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="FE/images/home/logo.png" alt="" /></a>
+							<a href="./"><img src="FE/images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -219,7 +219,7 @@
 							@foreach ($list_category_product as $cate)
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="./list-category">{{$cate->category_name}}</a></h4>
+									<h4 class="panel-title"><a href="./list-category/{{$cate->category_id}}">{{$cate->category_name}}</a></h4>
 								</div>
 							</div>
 							@endforeach
@@ -230,7 +230,7 @@
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
 									@foreach ($list_brand_product as $brand)
-								<li><a href="./list-brand">{{$brand->brand_name}}<span class="pull-right">(50)</span></a></li>
+								<li><a href="./list-brand/{{$brand->brand_id}}">{{$brand->brand_name}}<span class="pull-right">(50)</span></a></li>
 									@endforeach
 								</ul>
 							</div>

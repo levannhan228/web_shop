@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@homePage');
 
+
+Route::get('/list-category/{id}','CategoryProduct@show_CategoryHome');
+
+Route::get('/list-brand/{id}','BrandProduct@show_BrandHome');
+Route::get('/detail-product/{id}','ProductController@detailProduct');
+
 Route::get('/adminLogin','AdminController@loginAdmin');
 
 Route::get('/adminLogout','AdminController@logoutAdmin');
