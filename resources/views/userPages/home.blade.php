@@ -16,7 +16,7 @@
             <input type="hidden" value="1" class="cart_product_qty_{{$item->product_id}}">
               <a href="./detail-product/{{$item->product_id}}">
                 <img src="uploads/product/{{$item->product_image}}" alt="" height="300"/>
-                <h2>${{number_format($item->product_price)}}</h2>
+                <h2>${{number_format($item->product_price,0,',','.')}}</h2>
                 <p>{{$item->product_name}}</p>
               </a>
               {{-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
@@ -75,7 +75,7 @@
             <div class="single-products">
               <div class="productinfo text-center">
                 <img src="uploads/product/{{$item->product_image}}" alt="" height="300"/>
-                <h2>${{number_format($item->product_price)}}</h2>
+                <h2>${{number_format($item->product_price,0,',','.')}}</h2>
                 <p>{{$item->product_name}}</p>
                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
               </div>

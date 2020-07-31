@@ -13,7 +13,7 @@
         <thead>
           <tr class="cart_menu">
             <td class="image">Item</td>
-            <td class="description"></td>
+            <td class="description">Name</td>
             <td class="price">Price</td>
             <td class="quantity">Quantity</td>
             <td class="total">Total</td>
@@ -21,27 +21,30 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($data as $item)
+          @foreach (Session::get('cart') as $cart)
+          @php
+              $subtotal=$cart['product_price']*$cart['product_qty'];
+          @endphp
           <tr>
             <td class="cart_product">
-            <a href=""><img src="uploads/product/{{$item->product_image}}" alt="" height="50px"></a>
+              <a href=""><img src="uploads/product/{{$cart['product_image']}}" alt="" height="50px"></a>
             </td>
             <td class="cart_description">
-              <h4><a href="">{{$item->product_name}}</a></h4>
-              <p>Web ID: {{$item->product_id}}</p>
+              <h4><a href="">{{$cart['product_name']}}</a></h4>
+              <p>Web ID: {{$cart['product_id']}}</p>
             </td>
             <td class="cart_price">
-            <p>${{number_format($item->product_price)}}</p>
+              <p data-id="{{$cart['session_id']}}">${{number_format($cart['product_price'],0,',','.')}}</p>
             </td>
             <td class="cart_quantity">
-              <div class="cart_quantity_button">
-                <a class="cart_quantity_up" href=""> + </a>
-              <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                <a class="cart_quantity_down" href=""> - </a>
+              <div class="cart_quantity_button" >
+                <a class="cart_quantity_down" data-id="{{$cart['session_id']}}" > - </a>
+              <input class="cart_quantity_input" type="text" min="0" data-id="{{$cart['session_id']}}" name="quantity" value="{{$cart['product_qty']}}" autocomplete="off" size="2">
+                <a class="cart_quantity_up" data-id="{{$cart['session_id']}}"> + </a>
               </div>
             </td>
             <td class="cart_total">
-              <p class="cart_total_price">$59</p>
+              <p class="cart_total_price" id="total_{{$cart['session_id']}}">${{number_format($subtotal,0,',','.')}}</p>
             </td>
             <td class="cart_delete">
               <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>

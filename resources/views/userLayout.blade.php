@@ -91,7 +91,7 @@
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="./show-cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="./adminLogin"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -427,7 +427,8 @@
 		<script src="FE/js/main.js"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		{{-- <script src="FE/js/sweetalert.js"></script> --}}
-		<script src="FE/js/add-to-card.js"></script>
+		<script src="FE/js/add-to-cart.js"></script>
+		<script src="FE/js/number_format .js"></script>
 
 </body>
 </html>

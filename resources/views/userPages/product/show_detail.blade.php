@@ -47,7 +47,7 @@
         <form action="./save-cart" method="POST">
           {{ csrf_field() }}
           <span>
-          <span>US ${{number_format($detail_product->product_price)}}</span>
+          <span>US ${{number_format($detail_product->product_price,0,',','.')}}</span>
             <label>Quantity:</label>
             <input type="number" name="qty" min="1" value="1" />
             <input name="productid_hidden" type="hidden" value="{{$detail_product->product_id}}"/>
