@@ -44,14 +44,19 @@
       <h2>{{$detail_product->product_name}}</h2>
         <p>Web ID: {{$detail_product->product_id}}</p>
         <img src="FE/images/product-details/rating.png" alt="" />
-        <form action="./save-cart" method="POST">
-          {{ csrf_field() }}
+        <form>
+          @csrf
+          <input type="hidden" value="{{$detail_product->product_id}}" class="cart_product_id_{{$detail_product->product_id}}">
+          <input type="hidden" value="{{$detail_product->product_name}}" class="cart_product_name_{{$detail_product->product_id}}">
+          <input type="hidden" value="{{$detail_product->product_image}}" class="cart_product_image_{{$detail_product->product_id}}">
+          <input type="hidden" value="{{$detail_product->product_price}}" class="cart_product_price_{{$detail_product->product_id}}">
+          <input type="hidden" value="1" id="qty_detail_change" class="cart_product_qty_{{$detail_product->product_id}}">
           <span>
           <span>US ${{number_format($detail_product->product_price,0,',','.')}}</span>
             <label>Quantity:</label>
-            <input type="number" name="qty" min="1" value="1" />
+            <input type="number" id="qty_detail" name="qty" min="1" value="1" />
             <input name="productid_hidden" type="hidden" value="{{$detail_product->product_id}}"/>
-            <button type="submit" class="btn btn-fefault cart">
+            <button type="button" class="btn btn-fefault cart add-to-cart" data-id="{{$detail_product->product_id}}">
               <i class="fa fa-shopping-cart"></i>
               Add to cart
             </button>

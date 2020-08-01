@@ -25,9 +25,10 @@
           @php
               $subtotal=$cart['product_price']*$cart['product_qty'];
           @endphp
-          <tr>
+          <tr id="product_tr_{{$cart['session_id']}}">
+
             <td class="cart_product">
-              <a href=""><img src="uploads/product/{{$cart['product_image']}}" alt="" height="50px"></a>
+              <a href=""><img src="uploads/product/{{$cart['product_image']}}" alt="" style="height:50px;width: 50px;object-fit: cover !important;"></a>
             </td>
             <td class="cart_description">
               <h4><a href="">{{$cart['product_name']}}</a></h4>
@@ -38,19 +39,22 @@
             </td>
             <td class="cart_quantity">
               <div class="cart_quantity_button" >
-                <a class="cart_quantity_down" data-id="{{$cart['session_id']}}" > - </a>
-              <input class="cart_quantity_input" type="text" min="0" data-id="{{$cart['session_id']}}" name="quantity" value="{{$cart['product_qty']}}" autocomplete="off" size="2">
-                <a class="cart_quantity_up" data-id="{{$cart['session_id']}}"> + </a>
+                <button class="btn cart_quantity_down" data-id="{{$cart['session_id']}}" > - </button>
+              <input class="cart_quantity_input" type="text" min="0" max="99" data-id="{{$cart['session_id']}}" name="quantity" value="{{$cart['product_qty']}}" autocomplete="off" size="2">
+                <button class="btn cart_quantity_up" data-id="{{$cart['session_id']}}"> + </button>
               </div>
             </td>
             <td class="cart_total">
               <p class="cart_total_price" id="total_{{$cart['session_id']}}">${{number_format($subtotal,0,',','.')}}</p>
             </td>
             <td class="cart_delete">
-              <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+              <a class="cart_quantity_delete" data-id="{{$cart['session_id']}}"><i class="fa fa-times"></i></a>
             </td>
           </tr>
           @endforeach
+          <tr>
+            <td><button class="btn check_out">Update Cart</button></td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -19,8 +19,22 @@ $(document).ready(function () {
         _token: _token
       },
       success: function (data) {
-        console.log(data);
-        swal("Success", "Add to cart successfully!", "success");
+        swal({
+          title: "Add product to cart successfully",
+          text: "Into the cart to check",
+          icon: "success",
+          buttons: {
+            cancel: true,
+            cart: {
+              text: "To cart",
+              value: "cart"
+            }
+          }
+        }).then((value)=>{
+          if(value=="cart"){
+            window.location.href='./show-cart'
+          }
+        })
       }
     })
   })
@@ -54,4 +68,9 @@ $(document).ready(function () {
       $('#total_'+targetId).html('$'+number_format(value_price_total,0,',','.'));
     }
   })
+
+  $(document).on('input', '#qty_detail', function(){
+    var qty_detail = $('#qty_detail').val();
+    $('#qty_detail_change').val(qty_detail)
+})
 });

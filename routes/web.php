@@ -21,9 +21,9 @@ Route::get('/list-category/{id}','CategoryProduct@show_CategoryHome');
 
 Route::get('/list-brand/{id}','BrandProduct@show_BrandHome');
 Route::get('/detail-product/{id}','ProductController@detailProduct');
-Route::post('/save-cart','CartController@saveCart');
-Route::get('/show-cart','CartController@saveCart');
+Route::get('/show-cart','CartController@showCart');
 Route::post('/add-cart-ajax','CartController@addCartAjax');
+Route::get('/delete_itemCart/{session_id}','CartController@delete_itemCart');
 
 Route::get('/adminLogin','AdminController@loginAdmin');
 

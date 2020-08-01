@@ -20,6 +20,7 @@ class CartController extends Controller
             $is_avaiable = 0;
             foreach($cart as $key => $val){
                 if($val['product_id']==$data['cart_id']){
+                    // $val['product_qty']==$val['product_qty']++;
                     $is_avaiable++;
                 }
             }
@@ -47,24 +48,6 @@ class CartController extends Controller
         }
         Session::save();
     }
-    public function saveCart(Request $request)
-    {
-        $list_category_product = DB::table('category_product')
-        ->where('category_status','1')
-        ->orderby('category_id','desc')->get();
-
-        $list_brand_product = DB::table('brand_product')
-        ->where('brand_status','1')
-        ->orderby('brand_id','desc')->get();
-
-        $productId = $request->productid_hidden;
-        $quantity = $request->qty;
-
-        $data = DB::table('product')->where('product_id', $productId)->get();
-
-        return view('userPages.cart.show_cart',['list_category_product'=>$list_category_product,
-        'list_brand_product'=>$list_brand_product,'data'=>$data]);
-    }
     public function showCart()
     {
         $list_category_product = DB::table('category_product')
@@ -75,10 +58,20 @@ class CartController extends Controller
         ->where('brand_status','1')
         ->orderby('brand_id','desc')->get();
 
-        // $data = DB::table('product')->where('product_id', $productId)->get();
-
         return view('userPages.cart.show_cart',['list_category_product'=>$list_category_product,
         'list_brand_product'=>$list_brand_product]);
     }
-
+    public function delete_itemCart($session_id)
+    {
+        
+        $cart = Session::get('cart');
+        if($cart==true){
+            foreach($cart as $key => $val){
+                if($val['session_id']==$session_id){
+                    unset($cart[$key]);
+                }
+            }
+            Session::put('cart',$cart);
+        }
+    }
 }

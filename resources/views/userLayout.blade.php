@@ -428,7 +428,8 @@
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		{{-- <script src="FE/js/sweetalert.js"></script> --}}
 		<script src="FE/js/add-to-cart.js"></script>
-		<script src="FE/js/number_format .js"></script>
+		<script src="FE/js/number_format.js"></script>
+		<script src="FE/js/delete-item-cart.js"></script>
 
 </body>
 </html>
