@@ -16,11 +16,12 @@ class CartController extends Controller
         $data = $request->all();
         $session_id = substr(md5(microtime()),rand(0,26),5);
         $cart = Session::get('cart');
-        if($cart==true){
+        if($cart){
             $is_avaiable = 0;
             foreach($cart as $key => $val){
                 if($val['product_id']==$data['cart_id']){
-                    // $val['product_qty']==$val['product_qty']++;
+                    $cart[$key]['product_qty'] = $val['product_qty']+=1;
+                    Session::put('cart',$cart);
                     $is_avaiable++;
                 }
             }
@@ -74,4 +75,10 @@ class CartController extends Controller
             Session::put('cart',$cart);
         }
     }
+    // public function updateCartAjax(Request $request)
+    // {
+    //     $data = $request->all();
+    //     $cart = Session::get('cart');
+        
+    // }
 }

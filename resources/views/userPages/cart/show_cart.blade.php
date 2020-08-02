@@ -21,9 +21,14 @@
           </tr>
         </thead>
         <tbody>
+          @php
+            $total=0;   
+          @endphp
+          @if(Session::get('cart'))
           @foreach (Session::get('cart') as $cart)
           @php
               $subtotal=$cart['product_price']*$cart['product_qty'];
+              $total += $subtotal;
           @endphp
           <tr id="product_tr_{{$cart['session_id']}}">
 
@@ -53,8 +58,9 @@
           </tr>
           @endforeach
           <tr>
-            <td><button class="btn check_out">Update Cart</button></td>
+            <td><button class="btn check_out" id="update-to-cart">Update Cart(chưa làm)</button></td>
           </tr>
+        @endif
         </tbody>
       </table>
     </div>
@@ -124,7 +130,7 @@
       <div class="col-sm-6">
         <div class="total_area">
           <ul>
-            <li>Cart Sub Total <span>$59</span></li>
+            <li>Cart Sub Total <span id="total">${{number_format($total,0,',','.')}}</span></li>
             <li>Eco Tax <span>$2</span></li>
             <li>Shipping Cost <span>Free</span></li>
             <li>Total <span>$61</span></li>

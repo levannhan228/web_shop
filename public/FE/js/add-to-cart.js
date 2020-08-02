@@ -44,13 +44,16 @@ $(document).ready(function () {
     let value_price = $(".cart_price").find('p[data-id="' + targetId + '"]').html().substr(1).replace('.','');//gia
     let value_quaty = +$('input[data-id="' + targetId + '"]').val();//+ cover thanh number // so luong
     let value_price_total = $('#total_'+targetId).html().substr(1).replace('.','');//tong gia
+    let total_price = +$('#total').html().substr(1).replace('.','');// tong tat ca total_price_product
 
     if(value_quaty>1)
     {
       value_quaty -=1;
       $('input[data-id="' + targetId + '"]').val(value_quaty)
-      value_price_total = +value_price*+value_quaty;
-      $('#total_'+targetId).html('$'+number_format(value_price_total,0,',','.'));
+      value_price_total_new = +value_price*+value_quaty;
+      total_price -= (value_price_total - value_price_total_new);
+      $('#total_'+targetId).html('$'+number_format(value_price_total_new,0,',','.'));
+      $('#total').html('$'+number_format(total_price,0,',','.'));
     }
   })
 
@@ -60,12 +63,16 @@ $(document).ready(function () {
     let value_quaty = +$('input[data-id="' + targetId + '"]').val();//+ cover thanh number
     let value_price_total = $('#total_'+targetId).html().substr(1).replace('.','');//tong gia
 
+    let total_price = +$('#total').html().substr(1).replace('.','');// tong tat ca total_price_product
+
     if(value_quaty<99)
     {
       value_quaty +=1;
       $('input[data-id="' + targetId + '"]').val(value_quaty)
-      value_price_total = +value_price*+value_quaty;
-      $('#total_'+targetId).html('$'+number_format(value_price_total,0,',','.'));
+      value_price_total_new = +value_price*+value_quaty;
+      total_price += (value_price_total_new - value_price_total);
+      $('#total_'+targetId).html('$'+number_format(value_price_total_new,0,',','.'));
+      $('#total').html('$'+number_format(total_price,0,',','.'));
     }
   })
 

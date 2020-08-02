@@ -23,6 +23,7 @@ Route::get('/list-brand/{id}','BrandProduct@show_BrandHome');
 Route::get('/detail-product/{id}','ProductController@detailProduct');
 Route::get('/show-cart','CartController@showCart');
 Route::post('/add-cart-ajax','CartController@addCartAjax');
+// Route::post('/update-cart-ajax','CartController@updateCartAjax');
 Route::get('/delete_itemCart/{session_id}','CartController@delete_itemCart');
 
 Route::get('/adminLogin','AdminController@loginAdmin');
