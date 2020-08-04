@@ -136,7 +136,18 @@
             <li>Total <span>$61</span></li>
           </ul>
             <a class="btn btn-default update" href="">Update</a>
-            <a class="btn btn-default check_out" href="">Check Out</a>
+            <?php
+								$customer_id=Session::get('customer_id');
+								if($customer_id){
+								?>
+									<a class="btn btn-default check_out" href="./checkout">Check Out</a>
+								<?php	
+										}else {
+								?>
+										<a class="btn btn-default check_out" href="./login-checkout">Check Out</a>
+								<?php
+										}
+								?>
         </div>
       </div>
     </div>

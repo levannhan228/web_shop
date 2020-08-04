@@ -29,5 +29,6 @@
     </div>
   </div>
   @endforeach
+  <div class="fb-comments" data-href="http://localhost{{$_SERVER['REQUEST_URI']}}" data-numposts="10" data-width=""></div>
 </div
 @endsection

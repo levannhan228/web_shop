@@ -93,5 +93,6 @@
       <i class="fa fa-angle-right"></i>
       </a>			
   </div>
+<div class="fb-comments" data-href="http://localhost{{$_SERVER['REQUEST_URI']}}" data-numposts="10" data-width=""></div>
 </div><!--/recommended_items-->
 @endsection

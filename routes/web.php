@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','HomeController@homePage');
+Route::post('/search','HomeController@search');
 
 
 Route::get('/list-category/{id}','CategoryProduct@show_CategoryHome');
@@ -27,6 +28,9 @@ Route::post('/add-cart-ajax','CartController@addCartAjax');
 Route::get('/delete_itemCart/{session_id}','CartController@delete_itemCart');
 
 Route::get('/adminLogin','AdminController@loginAdmin');
+Route::get('/login-checkout','CheckoutController@loginCheckout');
+Route::post('/add-customer','CheckoutController@addCustomer');
+Route::get('/checkout','CheckoutController@checkout');
 
 Route::get('/adminLogout','AdminController@logoutAdmin');
 
@@ -61,3 +65,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/delete_product/{id}','ProductController@delete_product');
     });
 });	
+
+Route::post('/save-checkout-customer','CheckoutController@save_checkout_customer');
+Route::get('/payment','CheckoutController@payment');
+Route::get('/logout-checkout','CheckoutController@logout_checkout');
+Route::post('/login-customer','CheckoutController@login_customer');
+Route::post('/oder-place','CheckoutController@oder_place');

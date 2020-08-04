@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 		<meta name="author" content="">
+		{{-- seo --}}
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="INDEX,FOLLOW">
+{{-- lấy lnik hiện tại của web --}}
+<link rel="canonical" href={{$_SERVER['REQUEST_URI']}}> 
+<meta name="author" content="">
+{{-- endseo --}}
 		<base href="{{ asset('') }}">
 		<title>Home | E-Shopper</title>
 		{{-- <link href="FE/css/sweetalert.css" rel="stylesheet"> --}}
@@ -88,11 +96,38 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<?php
+								$customer_id=Session::get('customer_id');
+								$shipping=Session::get('shipping_id');
+								if($customer_id!=null && $shipping==null){
+								?>
+									<li><a href="./checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<?php	
+										}elseif($customer_id!=null && $shipping!=null) {
+								?>
+											<li><a href="./payment"><i class="fa fa-crosshairs"></i>Checkout</a></li>
+								<?php
+										}elseif($customer_id==null && $shipping==null) {
+								?>
+										<li><a href="./login-checkout"><i class="fa fa-crosshairs"></i>Checkout</a></li>
+								<?php
+										}
+								?>
+
 								<li><a href="./show-cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="./adminLogin"><i class="fa fa-lock"></i> Login</a></li>
+								<?php
+										$customer_id=Session::get('customer_id');
+										if($customer_id){
+								?>
+									<li><a href="./logout-checkout"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php	
+										}else {
+								?>
+											<li><a href="./login-checkout"><i class="fa fa-lock"></i> Login</a></li>
+								<?php
+										}
+								?>
 							</ul>
 						</div>
 					</div>
@@ -103,7 +138,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-6">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -135,10 +170,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-6">
+						<form action="./search" method="POST">
+							@csrf
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" name="keywords_submit"placeholder="Search"/>
+							<input type="submit" name="search_item" class="btn btn-primary" value="Search" style="margin-top:0px;color:black"/>
 						</div>
+					</form>
 					</div>
 				</div>
 			</div>
@@ -429,6 +468,7 @@
 		<script src="FE/js/add-to-cart.js"></script>
 		<script src="FE/js/number_format.js"></script>
 		<script src="FE/js/delete-item-cart.js"></script>
-
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=583773265555944&autoLogAppEvents=1" nonce="23KzQ4nR"></script>
 </body>
 </html>
